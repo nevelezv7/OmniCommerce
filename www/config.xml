@@ -3,20 +3,20 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.phonegap.hello-world"
-        version   = "1.0.0">
+        id        = "com.phonegap.ommnicommerce"
+        >
 
-    <name>Camera App</name>
+    <name>OmniCommerce</name>
 
     <description>
-        Camera example app.
+        You want it, you get it
     </description>
 
-    <author href="http://phonegap.com" email="support@phonegap.com">
-        PhoneGap Team
+    <author  email="nevelezvgmail.com">
+        Nestor Velez & Jose Amud
     </author>
 
-    <preference name="phonegap-version" value="3.0.0" /> 
+    <preference name="phonegap-version" value="3.*" /> 
 
     <gap:plugin name="org.apache.cordova.core.camera" />
 </widget>
