@@ -49,7 +49,8 @@ var app = {
 
     takePicture: function() {
       navigator.camera.getPicture( function( imageURI ) {
-        alert( imageURI );
+        var image = document.getElementById('MyImg');
+        image.src = imageURI;
       },
       function( message ) {
         alert( message );
