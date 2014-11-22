@@ -142,7 +142,7 @@ function buscarTiendas(idProducto){
             }, 
     });
 }
-
+/**
 function startScan() {
 
     cordova.plugins.barcodeScanner.scan(
@@ -157,3 +157,4 @@ function startScan() {
       }
     );
 }
+*/
