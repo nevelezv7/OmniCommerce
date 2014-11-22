@@ -16,7 +16,7 @@
         Nestor Velez & Jose Amud
     </author>
 
-    <preference name="phonegap-version" value="3.*" /> 
+    <preference name="phonegap-version" value="3.6.3" /> 
 
     <gap:plugin name="org.apache.cordova.core.camera" />
 </widget>
