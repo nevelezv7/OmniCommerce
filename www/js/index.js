@@ -68,13 +68,13 @@ var app = {
 
     fromGallery: function() {
 
-        navigator.camera.getPicture(onSuccess, onFail, { 
+         navigator.camera.getPicture(onSuccess, onFail, { 
             quality: 50,
             destinationType: Camera.DestinationType.DATA_URL,
-            sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+            sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
         });
 
-        function onSuccess(imageURI) {
+        function onSuccess(dataUrl) {
             var image = document.getElementById('MyImg');
             image.src = 'data:image/jpeg;base64,'+ dataUrl;
             image.style.visibility= "visible";
