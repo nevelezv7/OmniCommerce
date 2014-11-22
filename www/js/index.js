@@ -81,3 +81,37 @@ function mostrarOpcionesCamara(){
     panel2.style.display= "block";
 
 }
+
+function BuscarXFoto(){
+    var img = document.getElementById('MyImg');
+    var send = {
+        "image": img.src
+    };
+
+    $.ajax({
+            data:  send,
+            dataType: 'jsonp',
+            url:   'http://www.mocky.io/v2/5470baf35f06d5fb0c6687e8',
+            type:  'post',
+            success:  function (result) {
+                var panel2 = document.getElementById('opcionesCamara');
+                panel2.style.display= "none";
+                var panelResults = document.getElementById('resultadoBusqueda');
+                panelResults.style.display= "block";
+                $( result.products ).each(function() {
+                    var newDiv = '<div class="searchResult">';
+                    newDiv += '   <div class="imgResult">';
+                    newDiv += '      <img src="'+$( this )[0].img+'" alt="img/logo.png" class="imResult2"/>';
+                    newDiv += '    </div>';
+                    newDiv += '    <div class="infoResult">';
+                    newDiv += '        <b>'+$( this )[0].name+'</b> <br />';
+                    newDiv +=         $( this )[0].precio+'<br />';
+                    newDiv += '        <button onclick="buscarTiendas('+$( this )[0].id+')"> Ver en '+$( this )[0].tiendas+' Tiendas </button>';
+                    newDiv += '    </div>';
+                    newDiv += '</div>';
+                    $('#resultadosPanel').append(newDiv);
+                    
+                });
+            }, 
+    });
+}
