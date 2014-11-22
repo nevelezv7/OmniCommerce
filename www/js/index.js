@@ -115,3 +115,34 @@ function BuscarXFoto(){
             }, 
     });
 }
+
+function buscarTiendas(idProducto){
+
+    var send = {
+        "image": idProducto
+    };
+
+    $.ajax({
+            data:  send,
+            dataType: 'jsonp',
+            url:   'http://www.mocky.io/v2/5470c5985f06d5390e6687ec',
+            type:  'post',
+            success:  function (result) {
+                var panelResults = document.getElementById('resultadoBusqueda');
+                panelResults.style.display= "block";
+                $( result.stores ).each(function() {
+                    var newDiv = '<div class="searchResult">';
+                    newDiv += '   <div class="imgResult">';
+                    newDiv += '      <img src="'+$( this )[0].img+'" alt="img/logo.png" class="imResult2"/>';
+                    newDiv += '    </div>';
+                    newDiv += '    <div class="infoResult">';
+                    newDiv += '        <b>'+$( this )[0].name+'</b> <br />';
+                    newDiv +=         $( this )[0].direccion+'<br />';
+                    newDiv +=         $( this )[0].unidadesDisp+'<br />';
+                    newDiv += '    </div>';
+                    newDiv += '</div>';
+                    $('#resultadosPanel').append(newDiv);
+                });
+            }, 
+    });
+}
