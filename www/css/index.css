@@ -27,7 +27,7 @@
 }
 
 #btnBuscarXFoto{
-    visibility: hidden;
+    /*visibility: hidden;*/
     margin-top: 0.7%;
     display: block;
     margin: 0 auto;
