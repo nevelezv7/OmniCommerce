@@ -21,7 +21,16 @@
 
 #MyImg{
     visibility: hidden;
-    width: 80%;
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+#btnBuscarXFoto{
+    visibility: hidden;
+
+    display: block;
+    margin: 0 auto;
 }
 
 #pantallaBienvenida{
@@ -34,14 +43,20 @@
     padding-top: 4%;
     font-weight: bold;
     font-size: 2.5em;
+    text-align: center;
 }
 .contentPage{
     text-align: center;
-
+    margin-top: 10%;
 }
 
 #pantallaBienvenida{
-    margin-top: 3%;
+    margin-top: 10%;
+}
+
+#opcionesCamara{
+    margin-top: 10%;
+    display: none;
 }
 
 .itemMenu{
