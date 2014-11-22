@@ -48,16 +48,41 @@ var app = {
     },
 
     takePicture: function() {
-      navigator.camera.getPicture( function( imageURI ) {
-        var image = document.getElementById('MyImg');
-        image.src = imageURI;
-      },
-      function( message ) {
-        alert( message );
-      },
-      {
-        quality: 50,
-        destinationType: Camera.DestinationType.FILE_URI
-      });
-    }
+
+        navigator.camera.getPicture(onSuccess, onFail, { 
+            quality: 50,
+            destinationType: Camera.DestinationType.FILE_URI 
+        });
+
+        function onSuccess(imageURI) {
+            var image = document.getElementById('MyImg');
+            image.src = imageURI;
+            image.style.visibility= "visible";
+        }
+
+        function onFail(message) {
+            alert('Error');
+            console.log('Failed because: ' + message);
+        }
+    },
+
+    fromGallery: function() {
+
+        navigator.camera.getPicture(onSuccess, onFail, { 
+            quality: 50,
+            destinationType: Camera.DestinationType.DATA_URL,
+            sourceType: Camera.PictureSourceType.PHOTOLIBRARY
+        });
+
+        function onSuccess(imageURI) {
+            var image = document.getElementById('MyImg');
+            image.src = 'data:image/jpeg;base64,'+ dataUrl;
+            image.style.visibility= "visible";
+        }
+
+        function onFail(message) {
+            alert('Error');
+            console.log('Failed because: ' + message);
+        }
+    },
 };
