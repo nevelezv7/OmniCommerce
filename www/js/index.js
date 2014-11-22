@@ -84,12 +84,8 @@ function mostrarOpcionesCamara(){
 
 function BuscarXFoto(){
     var img = document.getElementById('MyImg');
-    var send = {
-        "image": img.src
-    };
 
     $.ajax({
-            data:  send,
             dataType: 'jsonp',
             url:   'http://www.mocky.io/v2/5470baf35f06d5fb0c6687e8',
             type:  'post',
@@ -121,15 +117,15 @@ function buscarTiendas(idProducto){
     var send = {
         "image": idProducto
     };
-
     $.ajax({
             data:  send,
             dataType: 'jsonp',
-            url:   'http://www.mocky.io/v2/5470c5985f06d5390e6687ec',
+            url:   'http://www.mocky.io/v2/5470c73c5f06d5730e6687ee',
             type:  'post',
             success:  function (result) {
                 var panelResults = document.getElementById('resultadoBusqueda');
                 panelResults.style.display= "block";
+                $('#resultadosPanel').html('');
                 $( result.stores ).each(function() {
                     var newDiv = '<div class="searchResult">';
                     newDiv += '   <div class="imgResult">';
@@ -138,7 +134,7 @@ function buscarTiendas(idProducto){
                     newDiv += '    <div class="infoResult">';
                     newDiv += '        <b>'+$( this )[0].name+'</b> <br />';
                     newDiv +=         $( this )[0].direccion+'<br />';
-                    newDiv +=         $( this )[0].unidadesDisp+'<br />';
+                    newDiv +=         $( this )[0].unidadesDisp+' Unidades disponibles<br />';
                     newDiv += '    </div>';
                     newDiv += '</div>';
                     $('#resultadosPanel').append(newDiv);
