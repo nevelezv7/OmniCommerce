@@ -90,8 +90,8 @@ var app = {
                 url:   'http://www.mocky.io/v2/5471ff80db32049807feda0c',
                 type:  'post',
                 success:  function (result) {
-                    var panel2 = document.getElementById('opcionesCamara');
-                    panel2.style.display= "none";
+                    var panel = document.getElementById('pantallaBienvenida');
+                    panel.style.display= "none";
                     var panelResults = document.getElementById('resultadoBusqueda');
                     panelResults.style.display= "block";
                     $( result.products ).each(function() {
