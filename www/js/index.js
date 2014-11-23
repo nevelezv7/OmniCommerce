@@ -45,7 +45,6 @@ var app = {
         }
 
         function onFail(message) {
-            alert('Error');
             console.log('Failed because: ' + message);
         }
     },
@@ -67,7 +66,6 @@ var app = {
         }
 
         function onFail(message) {
-            alert('Error');
             console.log('Failed because: ' + message);
         }
     },
