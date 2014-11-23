@@ -77,22 +77,42 @@ var app = {
 
         scanner.scan( function (result) { 
 
-            alert("We got a barcode\n" + 
+            console.log("We got a barcode\n" + 
             "Result: " + result.text + "\n" + 
             "Format: " + result.format + "\n" + 
             "Cancelled: " + result.cancelled);  
 
-           console.log("Scanner result: \n" +
-                "text: " + result.text + "\n" +
-                "format: " + result.format + "\n" +
-                "cancelled: " + result.cancelled + "\n");
-            document.getElementById("info").innerHTML = result.text;
+            var send = {"Result": result.text, "Format": result.format, "Cancelled": result.cancelled}
+
+            $.ajax({
+                dataType: 'jsonp',
+                data: send,
+                url:   'http://www.mocky.io/v2/5471ff80db32049807feda0c',
+                type:  'post',
+                success:  function (result) {
+                    var panel2 = document.getElementById('opcionesCamara');
+                    panel2.style.display= "none";
+                    var panelResults = document.getElementById('resultadoBusqueda');
+                    panelResults.style.display= "block";
+                    $( result.products ).each(function() {
+                        var newDiv = '<div class="searchResult">';
+                        newDiv += '   <div class="imgResult">';
+                        newDiv += '      <img src="'+$( this )[0].img+'" alt="img/logo.png" class="imResult2"/>';
+                        newDiv += '    </div>';
+                        newDiv += '    <div class="infoResult">';
+                        newDiv += '        <b>'+$( this )[0].name+'</b> <br />';
+                        newDiv +=         $( this )[0].precio+'<br />';
+                        newDiv += '        <button onclick="buscarTiendas('+$( this )[0].id+')"> Ver en '+$( this )[0].tiendas+' Tiendas </button>';
+                        newDiv += '    </div>';
+                        newDiv += '</div>';
+                        $('#resultadosPanel').append(newDiv);
+                        
+                    });
+                }, 
+            });
+
             console.log(result);
-            /*
-            if (args.format == "QR_CODE") {
-                window.plugins.childBrowser.showWebPage(args.text, { showLocationBar: false });
-            }
-            */
+
 
         }, function (error) { 
             console.log("Scanning failed: ", error); 
